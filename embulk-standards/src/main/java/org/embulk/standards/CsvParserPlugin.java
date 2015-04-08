@@ -238,6 +238,11 @@ public class CsvParserPlugin
                         String skippedLine = tokenizer.skipCurrentLine();
                         log.warn(String.format("Skipped (line %d): %s", lineNumber, skippedLine), e);
                         //exec.notice().skippedLine(skippedLine);
+                    } catch (CsvTokenizer.InvalidValueException e) {
+                        long lineNumber = tokenizer.getCurrentLineNumber();
+                        String skippedLine = tokenizer.skipCurrentLine();
+                        log.warn(String.format("Skipped (line %d): %s", lineNumber, skippedLine), e);
+                        //exec.notice().skippedLine(skippedLine);
                     }
                 }
             }
